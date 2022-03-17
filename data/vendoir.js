@@ -15,9 +15,11 @@ const talkingClock = (timeString) => {
     hour12: true,
   }).format(formatTime);
 
-  // for min
-  let mins = +clock.split(":")[1].slice(0, 2);
-  let hrs = +clock.split(":")[0].slice(0, 2);
+  // to create hh:mm
+
+  let [hrs, mins] = clock.split(":");
+  hrs = +hrs;
+  mins = Number.parseInt(mins);
 
   const humanTalkingClock = TimeConverter(hrs, mins);
 
