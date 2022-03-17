@@ -1,8 +1,9 @@
 const TimeConverter = require("./helpers");
 
-const talkingClock = (...time) => {
-  /** ...time is [hrs, mins] in hh:mm format */
+const talkingClock = (timeString) => {
+  /** timeString is a string in hh:mm format */
   let timeNow = new Date();
+  const time = timeString?.split(":").map((time) => +time);
 
   if (time) timeNow = timeNow.setHours(...time);
 
@@ -22,5 +23,10 @@ const talkingClock = (...time) => {
 
   return humanTalkingClock;
 };
+
+// ----- Command line code is node data/vendoir.js hh:mm --------
+
+process.argv[2] && console.log(talkingClock(process.argv[2]));
+process.argv[2] === undefined && console.log(talkingClock());
 
 module.exports = talkingClock;
