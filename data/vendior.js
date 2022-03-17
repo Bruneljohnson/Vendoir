@@ -1,6 +1,7 @@
 const TimeConverter = require("./helpers");
 
 const talkingClock = (...time) => {
+  /** ...time is [hrs, mins] in hh:mm format */
   let timeNow = new Date();
 
   if (time) timeNow = timeNow.setHours(...time);
